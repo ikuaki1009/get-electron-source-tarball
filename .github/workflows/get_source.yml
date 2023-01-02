@@ -1,0 +1,27 @@
+name: Get Electron Source Tarball
+
+on:
+  workflow_dispatch:
+    inputs:
+      revision:
+        description: "The revision of electron"
+        required: true
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate source tarball
+        run: |
+          REVISION="${{ github.event.inputs.revision }}"
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
+          export PATH="$PWD/depot_tools:$PATH"
+          gclient config --name "src/electron" --unmanaged https://github.com/electron/electron
+          gclient sync --with_branch_heads --with_tags --no-history --revision "$REVISION"
+          mkdir -p upload
+          tar -I zstd --remove-files -cf "./upload/electron-src-$REVISION.tar.zst" src
+      - name: Upload tarball file
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-${{ github.event.inputs.revision }}-${{ github.sha }}
+          path: ./upload

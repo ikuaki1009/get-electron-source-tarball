@@ -11,6 +11,8 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo version
+        run: echo "${{ github.event.inputs.revision }}"
       - name: Generate source tarball
         run: |
           REVISION="${{ github.event.inputs.revision }}"

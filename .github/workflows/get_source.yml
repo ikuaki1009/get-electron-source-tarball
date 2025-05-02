@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Echo version
         run: echo "${{ github.event.inputs.revision }}"
+      - name: Cleanup Spaces
+        run: |
+          wget https://raw.githubusercontent.com/termux/termux-packages/refs/heads/master/scripts/free-space.sh
+          bash free-space.sh
       - name: Generate source tarball
         run: |
           REVISION="${{ github.event.inputs.revision }}"

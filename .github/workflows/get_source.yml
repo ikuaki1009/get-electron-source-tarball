@@ -22,7 +22,7 @@ jobs:
           # Download and install nvm:
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
           # in lieu of restarting the shell
-          \. "$HOME/.nvm/nvm.sh"
+          source "$HOME/.nvm/nvm.sh"
           # Download and install Node.js:
           nvm install 22
           # Verify the Node.js version:
@@ -34,6 +34,7 @@ jobs:
           yarn -v
       - name: Generate source tarball
         run: |
+          source "$HOME/.nvm/nvm.sh"
           REVISION="${{ github.event.inputs.revision }}"
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
           export PATH="$PWD/depot_tools:$PATH"

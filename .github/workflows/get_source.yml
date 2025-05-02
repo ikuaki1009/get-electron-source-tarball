@@ -23,7 +23,7 @@ jobs:
           mkdir -p upload
           tar -I zstd --remove-files -cf "./upload/electron-src-$REVISION.tar.zst" src
       - name: Upload tarball file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: upload-${{ github.event.inputs.revision }}-${{ github.sha }}
           path: ./upload

@@ -22,7 +22,7 @@ jobs:
         run: |
           wget https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz
           tar xf node-v22.15.0-linux-x64.tar.xz
-          export PATH="$PWD/node-v22.15.0-linux-x64:$PATH"
+          export PATH="$PWD/node-v22.15.0-linux-x64/bin:$PATH"
           REVISION="${{ github.event.inputs.revision }}"
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
           export PATH="$PWD/depot_tools:$PATH"

@@ -26,6 +26,7 @@ jobs:
           REVISION="${{ github.event.inputs.revision }}"
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
           export PATH="$PWD/depot_tools:$PATH"
+          $PWD/depot_tools/ensure_bootstrap
           gclient config --name "src/electron" --unmanaged https://github.com/electron/electron
           gclient sync --with_branch_heads --with_tags --no-history --revision "$REVISION"
           mkdir -p upload

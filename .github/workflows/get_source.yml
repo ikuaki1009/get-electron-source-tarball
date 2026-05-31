@@ -20,9 +20,9 @@ jobs:
           sudo rm -rf /usr/local/lib/android
       - name: Generate source tarball
         run: |
-          wget https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz
-          tar xf node-v22.15.0-linux-x64.tar.xz
-          export PATH="$PWD/node-v22.15.0-linux-x64/bin:$PATH"
+          wget https://nodejs.org/dist/v24.16.0/node-v24.16.0-linux-x64.tar.xz
+          tar xf node-v24.16.0-linux-x64.tar.xz
+          export PATH="$PWD/node-v24.16.0-linux-x64/bin:$PATH"
           sudo apt update
           sudo apt install python3
           REVISION="${{ github.event.inputs.revision }}"

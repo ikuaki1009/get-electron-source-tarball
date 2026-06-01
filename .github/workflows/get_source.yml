@@ -24,7 +24,7 @@ jobs:
           tar xf node-v24.16.0-linux-x64.tar.xz
           export PATH="$PWD/node-v24.16.0-linux-x64/bin:$PATH"
           sudo apt update
-          sudo apt install python3
+          sudo apt install python3 build-essential
           REVISION="${{ github.event.inputs.revision }}"
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
           export PATH="$PWD/depot_tools:$PATH"
